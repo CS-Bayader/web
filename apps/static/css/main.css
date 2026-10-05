@@ -1,0 +1,50 @@
+.links-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.links-container a {
+    display: block;
+    padding: 15px;
+    margin: 10px;
+    background-color: #eee;
+    color: black;
+    text-decoration: none;
+}
+
+/* Visited */
+.links-container a:visited {
+    color: purple;
+}
+
+/* Hover */
+.links-container a:hover {
+    background-color: lightgray;
+    color: red;
+}
+
+/* Active */
+.links-container a:active {
+    color: green;
+}
+
+#links-title {
+    text-align: center;
+    color: darkblue;
+}
+table {
+    width: 80%;
+    margin: 30px auto;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #ddd;
+}
