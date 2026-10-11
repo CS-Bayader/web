@@ -6,6 +6,7 @@ urlpatterns = [
     path('list_books/', views.list_books, name="books.list_books"),
     path('<int:bookId>/', views.viewbook, name="books.view_one_book"),
     path('aboutus/', views.aboutus, name="books.aboutus"),
+    path('index2/<int:val1>/', views.index2, name='books.index2'),
 
     # Lab 5
     path('html5/links/', views.links, name="books.links"),
