@@ -60,3 +60,53 @@ def listing(request):
 
 def tables(request):
     return render(request, 'books/tables.html')
+
+def search(request):
+    if request.method == "POST":
+        keyword = request.POST.get('keyword', '').strip().lower()
+        isTitle = request.POST.get('option1')
+        isAuthor = request.POST.get('option2')
+
+        books = __getBooksList()
+        newBooks = []
+
+        for book in books:
+            contained = False
+
+            if isTitle and keyword in book['title'].lower():
+                contained = True
+
+            if isAuthor and keyword in book['author'].lower():
+                contained = True
+
+            if contained:
+                newBooks.append(book)
+
+        return render(
+            request,
+            'bookmodule/bookList.html',
+            {'books': newBooks}
+        )
+
+    return render(request, 'bookmodule/search.html')
+
+def __getBooksList():
+    book1 = {
+        'id': 12344321,
+        'title': 'Continuous Delivery',
+        'author': 'J. Humble and D. Farley'
+    }
+
+    book2 = {
+        'id': 56788765,
+        'title': 'Reversing: Secrets of Reverse Engineering',
+        'author': 'E. Eilam'
+    }
+
+    book3 = {
+        'id': 43211234,
+        'title': 'The Hundred-Page Machine Learning Book',
+        'author': 'Andriy Burkov'
+    }
+
+    return [book1, book2, book3]
