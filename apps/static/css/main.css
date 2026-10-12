@@ -1,37 +1,64 @@
+/* =========================
+   Task 1 - Links
+   ========================= */
+/* Links layout */
 .links-container {
     padding: 20px;
-    text-align: center;
 }
 
 .links-container a {
     display: block;
     padding: 15px;
-    margin: 10px;
-    background-color: #eee;
-    color: black;
-    text-decoration: none;
+    text-align: center;
+    text-decoration: underline;
 }
 
-/* Visited */
+/* Each link's colors */
+#new-tab-link {
+    background-color: #aef0bd;
+    color: red;
+}
+
+.same-tab-link {
+    background-color: #555555;
+    color: yellow;
+}
+
+.dark-link {
+    background-color: black;
+    color: white;
+}
+
+/* Link states */
 .links-container a:visited {
     color: purple;
 }
 
-/* Hover */
 .links-container a:hover {
     background-color: lightgray;
     color: red;
 }
 
-/* Active */
 .links-container a:active {
     color: green;
 }
 
-#links-title {
-    text-align: center;
-    color: darkblue;
+#new-tab-link:visited {
+    color: purple;
 }
+
+#new-tab-link:hover {
+    background-color: lightgray;
+    color: red;
+}
+
+#new-tab-link:active {
+    color: green;
+}
+/* =========================
+   Task 4 - Tables
+   ========================= */
+
 table {
     width: 80%;
     margin: 30px auto;
@@ -47,4 +74,59 @@ td {
 
 th {
     background-color: #ddd;
+}
+
+/* Text formatting */
+.formatting-page h1 {
+    color: green;
+    background-color: beige;
+    padding: 10px;
+}
+
+.formatting-page p {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+}
+/* Nested lists */
+.listing-page h1 {
+    background-color: cadetblue;
+    color: white;
+    padding: 10px;
+}
+
+/* Fruits table */
+.tables-page .fruits-table {
+    width: 115px;
+    margin: 20px auto;
+    border: 1px solid gray;
+    border-collapse: separate;
+    border-spacing: 2px;
+}
+
+.tables-page .fruits-table th,
+.tables-page .fruits-table td {
+    border: 1px solid gray;
+    padding: 1px;
+    text-align: center;
+    background-color: white;
+}
+
+/* Camelid comparison table */
+.tables-page .camel-table {
+    width: 70%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+.tables-page .camel-table th,
+.tables-page .camel-table td {
+    border: 1px solid gray;
+    padding: 3px;
+    text-align: center;
+    background-color: white;
+}
+
+.camel-table img {
+    display: block;
+    margin: auto;
 }

@@ -1,55 +1,23 @@
-{% load static %}
-
 <!DOCTYPE html>
-<html>
+{% load static %}
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Text Formatting</title>
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
+<body class="formatting-page">
+    <h1>Example of Formatting tags</h1>
 
-<body>
-
-<h1>Example of Formatting tags</h1>
-
-<p>
-    This is a <b>bold</b> text.
-</p>
-
-<p>
-    This is an <strong>important</strong> text.
-</p>
-
-<p>
-    This is an <i>italic</i> text.
-</p>
-
-<p>
-    This is an <em>emphasized</em> text.
-</p>
-
-<p>
-    This is a <mark>highlighted</mark> text.
-</p>
-
-<p>
-    This is a <small>small</small> text.
-</p>
-
-<p>
-    This is a <del>deleted</del> text.
-</p>
-
-<p>
-    This is an <ins>inserted</ins> text.
-</p>
-
-<p>
-    H<sub>2</sub>O
-</p>
-
-<p>
-    X<sup>2</sup>
-</p>
-
+    <p>This text has <b>subtext</b> using b tag</p>
+    <p>This text has <strong>subtext</strong> using strong tag</p>
+    <p>This text has <i>subtext</i> using i tag</p>
+    <p>This text has <em>subtext</em> using emphasize tag</p>
+    <p>This text has <small>subtext</small> using small tag</p>
+    <p>This text has <mark>subtext</mark> using mark tag</p>
+    <p>This text has <del>subtext</del> using del tag</p>
+    <p>This text has <ins>subtext</ins> using ins tag</p>
+    <p>This text has X<sub>subtext</sub> using sub tag</p>
+    <p>This text has X<sup>subtext</sup> using sup tag</p>
 </body>
 </html>

@@ -1,45 +1,50 @@
-{% load static %}
-
 <!DOCTYPE html>
-<html>
+{% load static %}
+<html lang="en">
 <head>
-    <title>Listing</title>
+    <meta charset="UTF-8">
+    <title>Internet Features</title>
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
+<body class="listing-page">
+    <h1>The Best Features of the Internet</h1>
 
-<body>
+    <ul>
+        <li>You can meet new people from countries around the world.</li>
 
-<h1>HTML Lists</h1>
+        <li>
+            You have access to new media as it becomes public:
+            <ul>
+                <li>New games</li>
 
-<h2>Programming Languages</h2>
+                <li>
+                    New applications
+                    <ol>
+                        <li>For business</li>
+                        <li>For pleasure</li>
+                    </ol>
+                </li>
 
-<ul>
-    <li>Python</li>
-    <li>Java</li>
-    <li>
-        Web Development
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-        </ul>
-    </li>
-</ul>
+                <li>Around the clock news</li>
+                <li>Search engines</li>
+                <li>Shopping</li>
 
-<h2>Steps to Create a Website</h2>
+                <li>
+                    Programming
+                    <ol>
+                        <li>XML</li>
+                        <li>Java</li>
+                        <li>HTML5</li>
+                        <li>JavaScript</li>
+                        <li>New languages</li>
+                    </ol>
+                </li>
+            </ul>
+        </li>
 
-<ol>
-    <li>Plan the website</li>
-    <li>
-        Develop the website
-        <ol>
-            <li>Write HTML</li>
-            <li>Add CSS</li>
-            <li>Add JavaScript</li>
-        </ol>
-    </li>
-    <li>Test the website</li>
-</ol>
-
+        <li>Links</li>
+        <li>Keeping in touch with old friends</li>
+        <li>It's the technology of the future!</li>
+    </ul>
 </body>
 </html>

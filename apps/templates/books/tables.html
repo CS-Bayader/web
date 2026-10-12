@@ -1,47 +1,103 @@
-{% load static %}
-
 <!DOCTYPE html>
-<html>
+{% load static %}
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Tables</title>
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
+<body class="tables-page">
 
-<body>
+    <table class="fruits-table">
+        <caption>
+            <strong>Table 1: Table of Fruits and Their Prices</strong>
+        </caption>
 
-<h1>Books Table</h1>
+        <thead>
+            <tr>
+                <th scope="col">Fruit</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
 
-<table>
+        <tbody>
+            <tr>
+                <td>Apple</td>
+                <td>$0.25</td>
+            </tr>
+            <tr>
+                <td>Orange</td>
+                <td>$0.50</td>
+            </tr>
+            <tr>
+                <td>Banana</td>
+                <td>$1.00</td>
+            </tr>
+            <tr>
+                <td>Pineapple</td>
+                <td>$2.00</td>
+            </tr>
+        </tbody>
 
-    <tr>
-        <th>ID</th>
-        <th>Book Name</th>
-        <th>Author</th>
-        <th>Year</th>
-    </tr>
+        <tfoot>
+            <tr>
+                <th scope="row">Total</th>
+                <td><strong>$3.75</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+    <table class="camel-table">
+        <caption>Table 2: A more complex sample table</caption>
 
-    <tr>
-        <td>1</td>
-        <td>HTML & CSS</td>
-        <td>John Smith</td>
-        <td>2024</td>
-    </tr>
+        <thead>
+            <tr>
+                <td rowspan="2">
+                    <img src="{% static 'desert.jpg' %}"
+                         alt="Sand dunes in the desert"
+                         width="200"
+                         height="160">
+                </td>
 
-    <tr>
-        <td>2</td>
-        <td>Python Programming</td>
-        <td>Ahmed Ali</td>
-        <td>2023</td>
-    </tr>
+                <th colspan="4">
+                    Camelid comparison
+                    <br>
+                    Approximate as of 6/2011
+                </th>
+            </tr>
 
-    <tr>
-        <td>3</td>
-        <td>Django Web Development</td>
-        <td>Sarah Lee</td>
-        <td>2025</td>
-    </tr>
+            <tr>
+                <th scope="col"># of humps</th>
+                <th scope="col">Indigenous region</th>
+                <th scope="col">Spits?</th>
+                <th scope="col">Produces wool?</th>
+            </tr>
+        </thead>
 
+        <tbody>
+            <tr>
+                <th scope="row">Dromedary</th>
+                <td>1</td>
+                <td>Arabian Peninsula</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+
+            <tr>
+                <th scope="row">Camels (bactrian)</th>
+                <td>2</td>
+                <td>Africa/Asia</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+
+            <tr>
+                <th scope="row">Llamas</th>
+                <td>1</td>
+                <td>Andes Mountains</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+        </tbody>
 </table>
-
 </body>
 </html>
