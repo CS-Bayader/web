@@ -9,6 +9,8 @@ def index2(request, val1=0):
      return HttpResponse("value1 = " + str(val1))
 
 def viewbook(request, bookId):
+    if bookId == 1:
+        return render(request, 'bookmodule/one_book.html')
     book1 = {
         'id': 123,
         'title': 'Continuous Delivery',
