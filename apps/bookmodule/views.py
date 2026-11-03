@@ -6,6 +6,10 @@ from django.db.models import Q, Count, Sum, Avg, Max, Min
 from apps.usermodule.models import Address
 from django.db.models import F
 from django.db.models import OuterRef, Subquery
+from math import isfinite
+from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
+from .forms import BookForm
 
 def index(request):
     name = request.GET.get("name") or "world!"
@@ -290,4 +294,155 @@ def lab9_task6(request):
         request,
         'bookmodule/lab9_task6.html',
         {'publishers': publishers},
+    )
+def lab10_part1_listbooks(request):
+    books = Book.objects.order_by('id')
+    return render(
+        request,
+        'bookmodule/lab10_part1_listbooks.html',
+        {'books': books},
+    )
+def lab10_part1_addbook(request):
+    error = ""
+    values = {}
+
+    if request.method == "POST":
+        values = request.POST
+        title = values.get("title", "").strip()
+        author = values.get("author", "").strip()
+
+        try:
+            price = float(values.get("price", ""))
+            edition = int(values.get("edition", ""))
+
+            if not title or not author:
+                raise ValueError("Enter a title and an author.")
+            if len(title) > 100 or len(author) > 50:
+                raise ValueError("The title or author name is too long.")
+            if not isfinite(price) or price < 0:
+                raise ValueError("Enter a valid price of zero or more.")
+            if not 1 <= edition <= 32767:
+                raise ValueError("Enter an edition between 1 and 32767.")
+
+        except ValueError as exc:
+            error = str(exc)
+        else:
+            Book.objects.create(
+                title=title,
+                author=author,
+                price=price,
+                edition=edition,
+            )
+            return redirect("books.lab10_part1_listbooks")
+
+    return render(
+        request,
+        "bookmodule/lab10_part1_addbook.html",
+        {"error": error, "values": values},
+    )
+def lab10_part1_editbook(request, id):
+    book = get_object_or_404(Book, pk=id)
+    error = ""
+    values = {
+        "title": book.title,
+        "author": book.author,
+        "price": str(book.price),
+        "edition": book.edition,
+    }
+
+    if request.method == "POST":
+        values = request.POST
+        title = values.get("title", "").strip()
+        author = values.get("author", "").strip()
+
+        try:
+            price = float(values.get("price", ""))
+            edition = int(values.get("edition", ""))
+
+            if not title or not author:
+                raise ValueError("Enter a title and an author.")
+            if len(title) > 100 or len(author) > 50:
+                raise ValueError("The title or author name is too long.")
+            if not isfinite(price) or price < 0:
+                raise ValueError("Enter a valid price of zero or more.")
+            if not 1 <= edition <= 32767:
+                raise ValueError("Enter an edition between 1 and 32767.")
+        except ValueError as exc:
+            error = str(exc)
+        else:
+            book.title = title
+            book.author = author
+            book.price = price
+            book.edition = edition
+            book.save(update_fields=["title", "author", "price", "edition"])
+            return redirect("books.lab10_part1_listbooks")
+
+    return render(
+        request,
+        "bookmodule/lab10_part1_addbook.html",
+        {"error": error, "values": values, "editing": True},
+    )
+def lab10_part1_deletebook(request, id):
+    book = get_object_or_404(Book, pk=id)
+
+    if request.method == "POST":
+        book.delete()
+        return redirect("books.lab10_part1_listbooks")
+
+    return render(
+        request,
+        "bookmodule/lab10_part1_deletebook.html",
+        {"book": book},
+    )
+def lab10_part2_listbooks(request):
+    return render(
+        request,
+        "bookmodule/lab10_part1_listbooks.html",
+        {"books": Book.objects.order_by("id")},
+    )
+
+
+def lab10_part2_addbook(request):
+    form = BookForm(request.POST if request.method == "POST" else None)
+
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        return redirect("books.lab10_part2_listbooks")
+
+    return render(
+        request,
+        "bookmodule/lab10_part2_bookform.html",
+        {"form": form, "heading": "Add New Book"},
+    )
+
+
+def lab10_part2_editbook(request, id):
+    book = get_object_or_404(Book, pk=id)
+    form = BookForm(
+        request.POST if request.method == "POST" else None,
+        instance=book,
+    )
+
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        return redirect("books.lab10_part2_listbooks")
+
+    return render(
+        request,
+        "bookmodule/lab10_part2_bookform.html",
+        {"form": form, "heading": "Edit Book"},
+    )
+
+
+def lab10_part2_deletebook(request, id):
+    book = get_object_or_404(Book, pk=id)
+
+    if request.method == "POST":
+        book.delete()
+        return redirect("books.lab10_part2_listbooks")
+
+    return render(
+        request,
+        "bookmodule/lab10_part2_deletebook.html",
+        {"book": book},
     )
