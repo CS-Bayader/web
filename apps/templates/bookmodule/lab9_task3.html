@@ -1,0 +1,30 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Oldest Book per Publisher{% endblock %}
+
+{% block content %}
+<h1>Oldest Book per Publisher</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Publisher</th>
+            <th>Oldest Book</th>
+            <th>Publication Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for publisher in publishers %}
+        <tr>
+            <td>{{ publisher.name }}</td>
+            <td>{{ publisher.oldest_title|default_if_none:"No books" }}</td>
+            <td>{{ publisher.oldest_date|date:"Y-m-d"|default:"—" }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No publishers found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

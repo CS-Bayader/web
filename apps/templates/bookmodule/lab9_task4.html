@@ -1,0 +1,32 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Book Prices per Publisher{% endblock %}
+
+{% block content %}
+<h1>Book Prices per Publisher</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Publisher</th>
+            <th>Average Price</th>
+            <th>Minimum Price</th>
+            <th>Maximum Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for publisher in publishers %}
+        <tr>
+            <td>{{ publisher.name }}</td>
+            <td>{{ publisher.average_price|floatformat:2|default:"—" }}</td>
+            <td>{{ publisher.min_price|floatformat:2|default:"—" }}</td>
+            <td>{{ publisher.max_price|floatformat:2|default:"—" }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No publishers found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
